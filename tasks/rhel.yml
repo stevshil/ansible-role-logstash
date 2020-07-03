@@ -1,0 +1,4 @@
+- name: Install Logstash for RHEL system
+  yum:
+    name: "https://artifacts.elastic.co/downloads/logstash/logstash-{{ logstash_version }}.rpm"
+    state: installed

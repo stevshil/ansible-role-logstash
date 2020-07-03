@@ -1,0 +1,34 @@
+---
+dependencies:
+  - geerlingguy.java
+
+galaxy_info:
+  role_name: logstash
+  author: Steve Shilling
+  description: Logstash for Linux.
+  company: "TPS Services Ltd"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Amazon
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+  galaxy_tags:
+    - elasticsearch
+    - logstash
+
+allow_duplicates: true

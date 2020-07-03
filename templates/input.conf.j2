@@ -1,0 +1,11 @@
+input {
+{% for input in logstash_inputs %}
+  {{input.name}} {
+{% if input.config is defined %}
+{% for key,value in input.config.items() %}
+    {{key}} => {{value}}
+{% endfor %}
+{% endif %}
+  }
+{% endfor %}
+}

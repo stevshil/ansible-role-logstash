@@ -1,0 +1,15 @@
+- name: Check if my_package is installed
+  command: dpkg-query -W my_package
+  register: my_package_check_deb
+  failed_when: my_package_check_deb.rc > 1
+  changed_when: my_package_check_deb.rc == 1
+
+- name: Download logstash for Debian
+  get_url:
+    url="https://artifacts.elastic.co/downloads/logstash/logstash-{{ logstash_version }}.deb"
+    dest="/tmp/logstash-{{ logstash_version }}.deb"
+  when: my_package_check_deb.rc == 1
+
+- name: Install Logstash for Debian systems
+  apt: deb="/tmp/logstash-{{ logstash_version }}.deb"
+  when: my_package_check_deb.rc == 1

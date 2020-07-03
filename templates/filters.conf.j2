@@ -1,0 +1,15 @@
+filter {
+{% for filter in logstash_filters.config %}
+{% for key,value in filter.items() %}
+{% if key == 'name' %}
+  {{value}} {
+{% endif %}
+{% if key == 'attrs' %}
+{% for attr,attrvalue in value.items() %}
+    {{attr}} => {{attrvalue}}
+{% endfor %}
+{% endif %}
+{% endfor %}
+  }
+{% endfor %}
+}

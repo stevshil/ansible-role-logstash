@@ -1,0 +1,11 @@
+output {
+{% for output in logstash_outputs %}
+  {{output.name}} {
+{% if output.config is defined %}
+{% for key,value in output.config.items() %}
+    {{key}} => {{value}}
+{% endfor %}
+{% endif %}
+  }
+{% endfor %}
+}
